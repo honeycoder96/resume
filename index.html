@@ -88,9 +88,10 @@
     /* ─── Header ─────────────────────────────────────────────── */
     header {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      padding-bottom: 10px;
+      padding-bottom: 12px;
       border-bottom: 2px solid var(--accent);
       margin-bottom: 6px;
     }
@@ -143,6 +144,30 @@
       text-decoration: underline;
     }
 
+    .header-links {
+      width: 100%;
+      text-align: center;
+      font-size: 11px;
+      color: var(--mid);
+      letter-spacing: .04em;
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-links a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .header-links a:hover {
+      text-decoration: underline;
+    }
+
     /* ─── Mobile: stack header columns ───────────────────────── */
     @media (max-width: 600px) {
       header {
@@ -164,7 +189,7 @@
 
     /* ─── Section ────────────────────────────────────────────── */
     section {
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     .section-title {
@@ -447,9 +472,14 @@
           <span>Noida, India</span>
           <span><a href="tel:+919821443576">+91 98 2144 3576</a></span>
           <span><a href="mailto:honey.singhroi@gmail.com">honey.singhroi@gmail.com</a></span>
-          <span><a href="https://github.com/honeyhimself" target="_blank">github.com/honeyhimself</a></span>
-          <span><a href="https://linkedin.com/in/honeycoder96" target="_blank">linkedin.com/in/honeycoder96</a></span>
         </div>
+      </div>
+      <div class="header-links">
+        <a href="https://github.com/honeycoder96" target="_blank">github.com/honeycoder96</a>
+        <span class="sep" aria-hidden="true">|</span>
+        <a href="https://linkedin.com/in/honeycoder96" target="_blank">linkedin.com/in/honeycoder96</a>
+        <span class="sep" aria-hidden="true">|</span>
+        <a href="https://honeyhimself.com" target="_blank">honeyhimself.com</a>
       </div>
     </header>
 
