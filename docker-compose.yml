@@ -1,0 +1,13 @@
+networks:
+  dokploy-network:
+    external: true
+
+services:
+  resume:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: resume
+    networks:
+      - dokploy-network
+    restart: unless-stopped

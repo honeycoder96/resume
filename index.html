@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Honey Sharma — Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    /* ─── CSS Variables ─────────────────────────────────────── */
+    :root {
+      --ink: #1c1c1e;
+      --mid: #555558;
+      --light: #888;
+      --accent: #1a3a5c;
+      --accent2: #c0974f;
+      --rule: #c8c8c8;
+      --bar-fill: #1a3a5c;
+      --bar-empty: #e0e0e0;
+      --page-bg: #fff;
+      --page-w: 210mm;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Lato', 'Helvetica Neue', sans-serif;
+    }
+
+    /* ─── Reset ─────────────────────────────────────────────── */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      background: #e8e8e8;
+    }
+
+    /* ─── Page wrapper ──────────────────────────────────────── */
+    body {
+      font-family: var(--sans);
+      color: var(--ink);
+      background: #e8e8e8;
+      display: flex;
+      justify-content: center;
+      padding: 32px 16px 60px;
+    }
+
+    .page {
+      background: var(--page-bg);
+      width: var(--page-w);
+      min-height: 297mm;
+      padding: 14mm 15mm 14mm;
+      box-shadow: 0 8px 48px rgba(0, 0, 0, .18);
+      position: relative;
+    }
+
+    /* ─── Print button (screen only) ────────────────────────── */
+    .print-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      border: none;
+      padding: 12px 22px;
+      cursor: pointer;
+      border-radius: 4px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .25);
+      transition: background .2s;
+      z-index: 100;
+    }
+
+    .print-btn:hover {
+      background: var(--accent2);
+    }
+
+    /* ─── Header ─────────────────────────────────────────────── */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .header-left {
+      flex: 0 0 70%;
+    }
+
+    .header-right {
+      flex: 0 0 30%;
+      text-align: right;
+    }
+
+    header h1 {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    header .subtitle {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    .contact-line {
+      font-size: 11px;
+      color: var(--mid);
+      letter-spacing: .04em;
+      line-height: 1.7;
+    }
+
+    .header-right .contact-line span {
+      display: block;
+    }
+
+    .contact-line a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .contact-line a:hover {
+      text-decoration: underline;
+    }
+
+    /* ─── Mobile: stack header columns ───────────────────────── */
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .header-left,
+      .header-right {
+        flex: none;
+        width: 100%;
+      }
+
+      .header-right {
+        text-align: left;
+        margin-top: 8px;
+      }
+    }
+
+    /* ─── Section ────────────────────────────────────────────── */
+    section {
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-align: center;
+      margin: 10px 0 5px;
+      position: relative;
+    }
+
+    .section-title::before,
+    .section-title::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 30%;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    .section-title::before {
+      left: 0;
+    }
+
+    .section-title::after {
+      right: 0;
+    }
+
+    /* ─── Summary ────────────────────────────────────────────── */
+    .summary p {
+      font-size: 12px;
+      line-height: 1.75;
+      color: var(--ink);
+      text-align: justify;
+    }
+
+    /* ─── Skills ─────────────────────────────────────────────── */
+    .skills-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 28px;
+    }
+
+    .skill-category {
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--ink);
+    }
+
+    .skill-category strong {
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-right: 4px;
+    }
+
+    /* ─── Work History ───────────────────────────────────────── */
+    .job {
+      margin-bottom: 10px;
+    }
+
+    .job:last-child {
+      margin-bottom: 0;
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1px;
+    }
+
+    .job-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .job-date {
+      font-size: 11px;
+      color: var(--light);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .job-company {
+      font-size: 11px;
+      font-style: italic;
+      color: var(--mid);
+      margin-bottom: 4px;
+    }
+
+    .job ul {
+      padding-left: 14px;
+      margin-top: 4px;
+    }
+
+    .job ul li {
+      font-size: 11px;
+      line-height: 1.65;
+      color: var(--ink);
+      padding-left: 4px;
+      margin-bottom: 2px;
+      text-align: justify;
+    }
+
+    .job ul li::marker {
+      /* content: '▸ '; */
+      /* color: var(--accent2); */
+      font-size: 10px;
+    }
+
+    /* ─── Education ──────────────────────────────────────────── */
+    .edu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .edu-degree {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .edu-date {
+      font-size: 11px;
+      color: var(--light);
+      font-weight: 600;
+    }
+
+    .edu-school {
+      font-size: 11px;
+      font-style: italic;
+      color: var(--mid);
+      margin-bottom: 4px;
+    }
+
+    .edu ul {
+      padding-left: 14px;
+      margin-top: 4px;
+    }
+
+    .edu ul li {
+      font-size: 11px;
+      line-height: 1.65;
+      padding-left: 4px;
+      color: var(--ink);
+    }
+
+    .edu ul li::marker {
+      /* content: '▸ ';
+      color: var(--accent2); */
+      font-size: 10px;
+    }
+
+    /* ─── Projects ───────────────────────────────────────────── */
+    .project {
+      margin-bottom: 9px;
+    }
+
+    .project:last-child {
+      margin-bottom: 0;
+    }
+
+    .project-header {
+      display: flex;
+      align-items: baseline;
+      gap: 7px;
+      margin-bottom: 2px;
+      flex-wrap: wrap;
+    }
+
+    .project-name {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .project-url {
+      font-size: 11px;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: .02em;
+    }
+
+    .project-url:hover {
+      text-decoration: underline;
+    }
+
+    .project-skills {
+      font-size: 11px;
+      font-style: italic;
+      color: var(--mid);
+      margin-bottom: 2px;
+      line-height: 1.5;
+    }
+
+    .project-skills span {
+      font-weight: 700;
+      font-style: normal;
+      color: var(--ink);
+    }
+
+    .project-desc {
+      font-size: 12px;
+      line-height: 1.65;
+      color: var(--ink);
+      text-align: justify;
+    }
+
+    /* ─── Divider ────────────────────────────────────────────── */
+    .rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 6px 0;
+    }
+
+    .rule-accent {
+      border: none;
+      border-top: 1.5px solid var(--accent);
+    }
+
+    /* ─── Print styles ───────────────────────────────────────── */
+    @media print {
+      html {
+        background: white;
+        font-size: 16px;
+      }
+
+      body {
+        background: white;
+        padding: 0;
+        display: block;
+      }
+
+      .page {
+        width: 100%;
+        min-height: unset;
+        padding: 10mm 10mm;
+        box-shadow: none;
+      }
+
+      .print-btn {
+        display: none;
+      }
+
+      a {
+        color: var(--accent) !important;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <button class="print-btn" onclick="window.print()">⎙ Print / Save PDF</button>
+
+  <div class="page">
+
+    <!-- ── Header ── -->
+    <header>
+      <div class="header-left">
+        <h1>Honey Sharma</h1>
+        <p class="subtitle">Full Stack JavaScript Developer</p>
+      </div>
+      <div class="header-right">
+        <div class="contact-line">
+          <span>Noida, India</span>
+          <span><a href="tel:+919821443576">+91 98 2144 3576</a></span>
+          <span><a href="mailto:honey.singhroi@gmail.com">honey.singhroi@gmail.com</a></span>
+          <span><a href="https://github.com/honeyhimself" target="_blank">github.com/honeyhimself</a></span>
+          <span><a href="https://linkedin.com/in/honeycoder96" target="_blank">linkedin.com/in/honeycoder96</a></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ── Professional Summary ── -->
+    <section class="summary">
+      <h2 class="section-title">Professional Summary</h2>
+      <p>
+        Full-stack engineer with 7 years of experience building and shipping production-grade web products end-to-end.
+        Specialises in JavaScript/TypeScript across the entire stack — React, Node.js — with a strong focus on AI
+        integration,
+        real-time systems (Socket.IO, Yjs CRDTs), and scalable backend infrastructure. Experienced in taking products
+        from
+        schema design to deployment, with a track record of owning complex features independently — automated AI
+        screening
+        pipelines, collaborative code editors, GitHub review bots, and session analytics platforms.
+      </p>
+      <p>
+        Thrives in product-focused environments where engineering decisions directly shape the user experience.
+      </p>
+    </section>
+
+    <!-- ── Skills ── -->
+    <section>
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-list">
+        <div class="skill-category">
+          <strong>Languages:</strong> JavaScript, TypeScript, HTML/CSS
+        </div>
+        <div class="skill-category">
+          <strong>Frontend:</strong> React, Redux, Zustand, Angular
+        </div>
+        <div class="skill-category">
+          <strong>Backend:</strong> Node.js, Express, BullMQ, WebRTC
+        </div>
+        <div class="skill-category">
+          <strong>Tools :</strong> Git, Yjs (CRDT), Cloudflare
+        </div>
+        <div class="skill-category">
+          <strong>Infrastructure:</strong> MongoDB, Redis, Docker, Dokploy
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Work History ── -->
+    <section>
+      <h2 class="section-title">Work History</h2>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Lead Engineer</span>
+          <span class="job-date">Oct 2021 – Present</span>
+        </div>
+        <p class="job-company">InfoEdge India Limited — Noida, India</p>
+        <ul>
+          <li>Designed and developed a rule-based form configuration engine to power dynamic template based forms for
+            different
+            recruiter segments.</li>
+          <li>Developed a recruiter insights dashboard with visual analytics to enable data-driven hiring decisions.
+          </li>
+          <li>Worked on server-sent events (SSE) based notification service; major task being migration from MySQL to
+            MongoDB.</li>
+          <li>Mentored & designed AI insights from recruiter sessions and a chat interface to interact with the data.
+          </li>
+        </ul>
+      </div>
+
+      <hr class="rule" />
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Senior Software Engineer (Power Programmer)</span>
+          <span class="job-date">Jun 2019 – Oct 2021</span>
+        </div>
+        <p class="job-company">Infosys Technologies — Hyderabad, India</p>
+        <ul>
+          <li>Worked on internal resource allocation platform using Nodejs and Angular.</li>
+          <li>Created configurable module to enable and disable multi-threaded processing of images.</li>
+          <li>Increased read throughput by 20% using Lustre File System.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <!-- ── Education ── -->
+    <section class="edu">
+      <h2 class="section-title">Education</h2>
+      <div class="edu-header">
+        <span class="edu-degree">Bachelor of Science — Computer Engineering</span>
+        <span class="edu-date">Apr 2019</span>
+      </div>
+      <p class="edu-school">Galgotias University, Greater Noida, India, (CGPA : 8.9/10)</p>
+      <ul>
+        <li>Runner-up at STG Makethon: <em>Campaign Management Portal with 3rd Party Marketing Platform Integration</em>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ── Personal Projects ── -->
+    <section>
+      <h2 class="section-title">Personal Projects</h2>
+
+      <div class="project">
+        <div class="project-header">
+          <span class="project-name">AI Automation Based Interview Platform</span>
+          <a class="project-url" href="https://talentsync.honeyhimself.com"
+            target="_blank">talentsync.honeyhimself.com</a>
+          <!-- <span class="sep" aria-hidden="true" style="margin: 0; font-size: 8.5px;">|</span>
+          <a class="project-url" href="https://github.com/dummy/repo" target="_blank">github.com/dummy/repo</a> -->
+        </div>
+        <p class="project-skills"><span>Skills:</span> WebRTC for collaborative interviews, MongoDB, Socket.IO, Redis,
+          BullMQ, Yjs for CRDT, Cloudflare</p>
+        <p class="project-desc">AI-powered interview platform — automated screening, live video interviews with
+          collaborative whiteboard/code editor.</p>
+      </div>
+
+      <hr class="rule" />
+
+      <div class="project">
+        <div class="project-header">
+          <span class="project-name">Rsync - OAuth/OIDC based identity provider</span>
+          <a class="project-url" href="https://rsync.honeyhimself.com" target="_blank">rsync.honeyhimself.com</a>
+          <!-- <span class="sep" aria-hidden="true" style="margin: 0; font-size: 8.5px;">|</span>
+          <a class="project-url" href="https://github.com/dummy/repo" target="_blank">github.com/dummy/repo</a> -->
+        </div>
+        <p class="project-skills"><span>Skills:</span> OAuth 2.0, OIDC, JWT, NPM packages, Dokploy for automated
+          deployment</p>
+        <p class="project-desc">A OAuth2/OIDC identity provider built as a monorepo — OIDC server, React integration
+          layer published as npm packages. Implements Authorization Code + PKCE, TOTP-based MFA, refresh token rotation,
+          back-channel logout webhooks.</p>
+      </div>
+
+      <hr class="rule" />
+
+      <div class="project">
+        <div class="project-header">
+          <span class="project-name">Session Record and Replay</span>
+          <a class="project-url" href="https://record.honeyhimself.com" target="_blank">record.honeyhimself.com</a>
+          <!-- <span class="sep" aria-hidden="true" style="margin: 0; font-size: 8.5px;">|</span>
+          <a class="project-url" href="https://github.com/dummy/repo" target="_blank">github.com/dummy/repo</a> -->
+        </div>
+        <p class="project-skills"><span>Skills:</span> rrweb, MongoDB, injectable scripts, authentication and
+          authorization</p>
+        <p class="project-desc">Session recording and replay platform — embed a script to capture user interactions,
+          replay them frame-by-frame in a dashboard.</p>
+      </div>
+
+      <hr class="rule" />
+
+      <div class="project">
+        <div class="project-header">
+          <span class="project-name">WebGPU-LLM Based Local Code Review</span>
+          <a class="project-url" href="https://webllm.honeyhimself.com" target="_blank">webllm.honeyhimself.com</a>
+          <!-- <span class="sep" aria-hidden="true" style="margin: 0; font-size: 8.5px;">|</span>
+          <a class="project-url" href="https://github.com/dummy/repo" target="_blank">github.com/dummy/repo</a> -->
+        </div>
+        <p class="project-skills"><span>Skills:</span> WebGPU based local LLM, npm packages for Ollama based local code
+          review</p>
+        <p class="project-desc">In-browser code review using a locally-running LLM over WebGPU — 4-agent pipeline
+          covering bugs, security, performance, and summary with no server calls; plus a CLI-based Ollama code review
+          tool.</p>
+      </div>
+
+    </section>
+
+  </div><!-- .page -->
+
+</body>
+
+</html>
